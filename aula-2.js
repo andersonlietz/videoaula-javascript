@@ -1,18 +1,20 @@
  function adicionarTarefa() {
     
       //varre o documento em busca do id inputTarefa
-    let inputTarefa = document.getElementById("inputTarefa")
+    const inputTarefa = document.getElementById("inputTarefa")
    
 
     //variável tarefa recebe o valor contido no inputTarefa
      let tarefa = inputTarefa.value.trim()
+
+      const mensagem = document.getElementById("mensagem")
 
      if (tarefa == ""){
       //define a variavel mensagemErro
       let mensagemErro = "Adicione uma atividade válida!"  
 
       //varre o documento em busca do id mensagem e aplica o conteúdo da variável mensagemErro
-      document.getElementById("mensagem").textContent = mensagemErro;
+      mensagem.textContent = mensagemErro;
 
 
      }else{
@@ -20,10 +22,10 @@
       let mensagemSucesso = "Tarefa adicionada com sucesso!";
   
     //varre o documento em busca do id mensagem e aplica o conteúdo da variável mensagem
-       document.getElementById("mensagem").textContent = mensagemSucesso;
+       mensagem.textContent = mensagemSucesso;
 
        //variável listaTarefas varre o documento a procura do elemento de id listaTarefas
-       let listaTarefas = document.getElementById("listaTarefas")
+       const listaTarefas = document.getElementById("listaTarefas")
 
        //variável nova tarrefa cria o elemento li
        let novaTarefa =  document.createElement("li")
