@@ -1,9 +1,6 @@
+ let tarefas = []
+ 
  function adicionarTarefa() {
-    
-
-   // vermelho #A34743 
-   // verde #28A745
-
       //varre o documento em busca do id inputTarefa
     const inputTarefa = document.getElementById("inputTarefa")
    
@@ -28,25 +25,37 @@
      //declaraçã0 da variável mensagem
       let mensagemSucesso = "Tarefa adicionada com sucesso!";
   
+
       //define a cor da mensagem
       mensagem.style.color = "#28A745"; 
 
       //varre o documento em busca do id mensagem e aplica o conteúdo da variável mensagem
       mensagem.textContent = mensagemSucesso;
 
-       //variável listaTarefas varre o documento a procura do elemento de id listaTarefas
-       const listaTarefas = document.getElementById("listaTarefas")
+         tarefas.push(tarefa)
+      renderizarTarefas()
+     }
+      //esvazia o input após o onClick
+       inputTarefa.value = ""
+        
+    }
 
+    function renderizarTarefas(){
+
+      
+      //variável listaTarefas varre o documento a procura do elemento de id listaTarefas
+       const listaTarefas = document.getElementById("listaTarefas")
+       listaTarefas.innerHTML = []
+      let i = 0;
+      for(i; i < tarefas.length; i ++ ){
        //variável nova tarrefa cria o elemento li
        let novaTarefa =  document.createElement("li")
 
        //variavel novaTarefa aplica o conteúdo da variável tarefa entre o elemento li
-        novaTarefa.textContent = tarefa
+        novaTarefa.textContent = tarefas[i]
 
         //o elemento nomeado como listaTarefas recebe um elemento filho chamado novaTarefa
         listaTarefas.appendChild(novaTarefa)
-     }
-      //esvazia o input após o onClick
-       inputTarefa.value = ""
-    
+      }
+
     }
