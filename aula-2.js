@@ -46,16 +46,57 @@
       //variável listaTarefas varre o documento a procura do elemento de id listaTarefas
        const listaTarefas = document.getElementById("listaTarefas")
        listaTarefas.innerHTML = []
-      let i = 0;
-      for(i; i < tarefas.length; i ++ ){
+     
+      for( let i = 0; i < tarefas.length; i ++ ){
        //variável nova tarrefa cria o elemento li
        let novaTarefa =  document.createElement("li")
 
        //variavel novaTarefa aplica o conteúdo da variável tarefa entre o elemento li
         novaTarefa.textContent = tarefas[i]
+            //variável que cria o botão remover
+        let botaoRemover = document.createElement("button")
+        botaoRemover.className = "remover"
+        botaoRemover.textContent = "Remover"
+        botaoRemover.onclick = () => removerTarefa(i)
+        
+
+
+        let botaoEditar  = document.createElement("button")
+        botaoEditar.className = "editar"
+        botaoEditar.textContent = "Editar"
+        botaoEditar.onclick = () => editarTarefa(i)
+        
 
         //o elemento nomeado como listaTarefas recebe um elemento filho chamado novaTarefa
         listaTarefas.appendChild(novaTarefa)
+        novaTarefa.appendChild(botaoRemover)
+        novaTarefa.appendChild(botaoEditar)
       }
+
+    }
+
+    function removerTarefa(i){
+
+      tarefas.splice(i ,1)
+      renderizarTarefas()
+
+
+    }
+    function editarTarefa(i){
+      let tarefaEditada = prompt("Edite a Tarefa:")
+      if(tarefaEditada.trim() !== ""){
+         tarefas[i] = tarefaEditada
+         renderizarTarefas()
+
+      }
+
+    }
+
+    function limparLista(){
+
+      tarefas.length = 0
+      renderizarTarefas()
+      const mensagem = document.getElementById("mensagem")
+      mensagem.textContent = "Lista de tarefas limpa com sucesso!"
 
     }
