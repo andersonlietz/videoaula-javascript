@@ -45,7 +45,7 @@
       
       //variável listaTarefas varre o documento a procura do elemento de id listaTarefas
        const listaTarefas = document.getElementById("listaTarefas")
-       listaTarefas.innerHTML = []
+       listaTarefas.innerHTML = "";
      
       for( let i = 0; i < tarefas.length; i ++ ){
        //variável nova tarrefa cria o elemento li
@@ -91,12 +91,11 @@
       }
 
     }
-
+    
     function limparLista(){
 
       tarefas.length = 0
       renderizarTarefas()
       const mensagem = document.getElementById("mensagem")
       mensagem.textContent = "Lista de tarefas limpa com sucesso!"
-
     }
